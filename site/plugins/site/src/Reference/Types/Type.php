@@ -1,0 +1,58 @@
+<?php
+
+namespace Kirby\Reference\Types;
+
+use Kirby\Cms\Html;
+
+class Type
+{
+	protected static array $types = [
+		'string'    => 'string',
+		'int'       => 'int',
+		'integer'   => 'int',
+		'float'     => 'float',
+		'number'    => 'number',
+		'double'    => 'number',
+		'bool'      => 'bool',
+		'boolean'   => 'bool',
+		'false'     => 'bool',
+		'true'      => 'bool',
+		'array'     => 'array',
+		'object'    => 'object',
+		'static'    => 'object',
+		'self'      => 'object',
+		'$this'     => 'object',
+		'iterable'  => 'object',
+		'resource'  => 'object',
+		'null'      => 'null',
+		'void'      => 'void',
+		'callable'  => 'mixed',
+		'mixed'     => 'mixed'
+	];
+
+	public function __construct(
+		public string $type
+	) {
+	}
+
+	public static function factory(string $type): static
+	{
+		if (in_array($type, array_keys(static::$types), true) === true) {
+			return new static($type);
+		}
+
+		return new Identifier($type);
+	}
+
+	public function toHtml(): string
+	{
+		return Html::tag('code', $this->type, [
+			'class' => 'type type-' . static::$types[$this->type] ?? 'mixed'
+		]);
+	}
+
+	public function toString(): string
+	{
+		return $this->type;
+	}
+}

@@ -436,12 +436,12 @@ class Marsdown extends ParsedownExtra
 	protected function inlineCodeHandler($text, $nonNestables = [])
 	{
 		return [
-			[
-				'rawHtml' => Types::format(
-					$text,
-					count(array_intersect(['Url', 'Link'], $nonNestables)) === 0
-				)
-			]
+			// [
+			// 	'rawHtml' => Types::format(
+			// 		$text,
+			// 		count(array_intersect(['Url', 'Link'], $nonNestables)) === 0
+			// 	)
+			// ]
 		];
 	}
 

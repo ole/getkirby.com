@@ -1,9 +1,9 @@
 <?php
 
 use Kirby\Content\Field;
-use Kirby\Reference\ReflectionPage;
+use Kirby\Reference\ReferencePage;
 
-class ReferenceHookPage extends ReflectionPage
+class ReferenceHookPage extends ReferencePage
 {
 	public function example(): Field
 	{

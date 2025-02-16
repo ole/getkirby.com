@@ -1,11 +1,11 @@
 <?php
 extract([
-	'call'     => $call ?? (string)$page->call(),
+	'call'     => $call ?? $page->call(),
 	'language' => 'php'
 ]);
 ?>
 
-<?php if (empty($call) == false): ?>
+<?php if ($call->isNotEmpty()): ?>
 <figure class="code">
 	<pre><code class="language-<?= $language ?>"><?= $call ?></code></pre>
 </figure>
